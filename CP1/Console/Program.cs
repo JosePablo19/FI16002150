@@ -1,4 +1,5 @@
-﻿public class Numbers
+﻿//Gemini
+public class Numbers
 {
     private static readonly double N = 25;
 
@@ -19,15 +20,31 @@
 
     private static double Recursive(double z, double n)
     {
-        return n == 0 || n == 1 ? n : Recursive(z, n - 1) + Recursive(z, n - 2);
+        if (n == 0 || n == 1)
+            return 1.0;
+        else
+            return z * Recursive(z, n - 1) + Recursive(z, n - 2);
     }
 
     private static double Iterative(double z, double n)
     {
-        return 1.0;
+        if (n == 0 || n == 1)
+            return 1.0;
+
+            double f0 = 1.0;
+            double f1 = 1.0;
+            double f = 0.0;
+
+        for (int i = 2; i <= n; i++)
+        {   
+            f = z * f1 + f0;
+            f0 = f1;
+            f1 = f;
+        }
+        return f;
     }
 
-    private double Round(double value)
+    private static double Round(double value)
     {
         return Math.Round(value, 10);
     }

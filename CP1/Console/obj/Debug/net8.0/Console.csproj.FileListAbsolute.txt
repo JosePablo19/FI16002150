@@ -1,0 +1,15 @@
+C:\Users\soportetecnico\Desktop\CP\FI16002150\CP1\Console\obj\Debug\net8.0\Console.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\soportetecnico\Desktop\CP\FI16002150\CP1\Console\obj\Debug\net8.0\Console.AssemblyInfoInputs.cache
+C:\Users\soportetecnico\Desktop\CP\FI16002150\CP1\Console\obj\Debug\net8.0\Console.AssemblyInfo.cs
+C:\Users\soportetecnico\Desktop\CP\FI16002150\CP1\Console\obj\Debug\net8.0\Console.csproj.CoreCompileInputs.cache
+C:\Users\soportetecnico\Desktop\CP\FI16002150\CP1\Console\obj\Debug\net8.0\Console.sourcelink.json
+C:\Users\soportetecnico\Desktop\CP\FI16002150\CP1\Console\bin\Debug\net8.0\Console.exe
+C:\Users\soportetecnico\Desktop\CP\FI16002150\CP1\Console\bin\Debug\net8.0\Console.deps.json
+C:\Users\soportetecnico\Desktop\CP\FI16002150\CP1\Console\bin\Debug\net8.0\Console.runtimeconfig.json
+C:\Users\soportetecnico\Desktop\CP\FI16002150\CP1\Console\bin\Debug\net8.0\Console.dll
+C:\Users\soportetecnico\Desktop\CP\FI16002150\CP1\Console\bin\Debug\net8.0\Console.pdb
+C:\Users\soportetecnico\Desktop\CP\FI16002150\CP1\Console\obj\Debug\net8.0\Console.dll
+C:\Users\soportetecnico\Desktop\CP\FI16002150\CP1\Console\obj\Debug\net8.0\refint\Console.dll
+C:\Users\soportetecnico\Desktop\CP\FI16002150\CP1\Console\obj\Debug\net8.0\Console.pdb
+C:\Users\soportetecnico\Desktop\CP\FI16002150\CP1\Console\obj\Debug\net8.0\Console.genruntimeconfig.cache
+C:\Users\soportetecnico\Desktop\CP\FI16002150\CP1\Console\obj\Debug\net8.0\ref\Console.dll

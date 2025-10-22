@@ -1,4 +1,10 @@
+using Microsoft.AspNetCore.Mvc;
+using System.Text;
+using System.Xml.Serialization;
+// Use gemini
+
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -20,38 +26,62 @@ var list = new List<object>();
 
 app.MapGet("/", () => Results.Redirect("/swagger"));
 
-app.MapPost("/", () => list);
+app.MapPost("/", ([FromHeader(Name = "xml")] bool? xml) =>
+{
+    xml ??= false; // valor por defecto = false
 
+    if (xml == true)
+    {
+        // Serializar la lista como XML
+        var xmlSerializer = new XmlSerializer(typeof(List<object>));
+        using var stringWriter = new StringWriter(new StringBuilder());
+        xmlSerializer.Serialize(stringWriter, list);
+        return Results.Content(stringWriter.ToString(), "application/xml", Encoding.UTF8);
+    }
+
+    return Results.Ok(list);
+});
 app.MapPut("/", ([FromForm] int quantity, [FromForm] string type) =>
 {
+     if (quantity <= 0)
+        return Results.BadRequest(new { error = "'quantity' must be higher than zero" });
+
+    if (type != "int" && type != "float")
+        return Results.BadRequest(new { error = "'type' must be either 'int' or 'float'" });
+
     var random = new Random();
+
     if (type == "int")
     {
-        for (; quantity > 0; quantity--)
-        {
+        for (int i = 0; i < quantity; i++)
             list.Add(random.Next());
-        }
     }
-    else if (type == "float")
+    else
     {
-        for (; quantity > 0; quantity--)
-        {
+        for (int i = 0; i < quantity; i++)
             list.Add(random.NextSingle());
-        }
     }
+
+    return Results.Ok(list);
 }).DisableAntiforgery();
 
 app.MapDelete("/", ([FromForm] int quantity) =>
 {
-    for (; quantity > 0; quantity--)
-    {
-        list.RemoveAt(0);
-    }
+    if (quantity <= 0)
+        return Results.BadRequest(new { error = "'quantity' must be higher than zero" });
+
+    if (list.Count < quantity)
+        return Results.BadRequest(new { error = $"List has only {list.Count} elements" });
+
+    list.RemoveRange(0, quantity);
+    return Results.Ok(list);
+
 }).DisableAntiforgery();
 
 app.MapPatch("/", () =>
 {
-    return Results.Ok();
+    list.Clear();
+    return Results.Ok(new { message = "Se limpio correctamente" });
 });
 
 app.Run();
